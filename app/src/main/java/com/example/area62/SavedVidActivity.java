@@ -10,11 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
-
 import java.io.File;
 
 public class SavedVidActivity extends AppCompatActivity {
@@ -32,7 +30,6 @@ public class SavedVidActivity extends AppCompatActivity {
 
         // Get the list of video files from the /Videos folder
         File videosFolder = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "/Videos");
-        //File[] videoFiles = videosFolder.listFiles();
 
         File[] videoFiles = videosFolder.listFiles();
         if (videoFiles != null) {

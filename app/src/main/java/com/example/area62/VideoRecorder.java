@@ -11,11 +11,6 @@ import com.google.ar.sceneform.SceneView;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Video Recorder class handles recording the contents of a SceneView. It uses MediaRecorder to
- * encode the video. The quality settings can be set explicitly or simply use the CamcorderProfile
- * class to select a predefined set of parameters.
- */
 public class VideoRecorder {
     private static final String TAG = "VideoRecorder";
     private static final int DEFAULT_BITRATE = 10000000;
@@ -109,7 +104,7 @@ public class VideoRecorder {
                                     + "/Videos");
         }
         if (videoBaseName == null || videoBaseName.isEmpty()) {
-            videoBaseName = "Sample";
+            videoBaseName = "VID_";
         }
         videoPath =
                 new File(

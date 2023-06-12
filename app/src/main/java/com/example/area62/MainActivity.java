@@ -2,7 +2,6 @@ package com.example.area62;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,23 +12,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.ar.core.AugmentedFace;
 import com.google.ar.core.Frame;
-import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.Node;
 import com.google.ar.sceneform.math.Vector3;
-import com.google.ar.sceneform.rendering.Color;
-import com.google.ar.sceneform.rendering.MaterialFactory;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.rendering.Renderable;
-import com.google.ar.sceneform.rendering.ShapeFactory;
 import com.google.ar.sceneform.rendering.Texture;
-import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.AugmentedFaceNode;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -40,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean isAdded = false;
     private ListView textureListView;
     private ArrayAdapter<Integer> textureAdapter;
-
     private ArrayAdapter<String> itemAdapter;
-    private List<String> itemNames;
-    private List<Integer> textureList;
+    private List<String> itemNames = Arrays.asList("Bushy", "Brown", "Blue", "Specs", "Black", "French", "Shaolin", "Hitler");
+    private List<Integer> textureList = Arrays.asList(R.drawable.bush, R.drawable.brown, R.drawable.blue, R.drawable.specs, R.drawable.googles_black, R.drawable.french, R.drawable.shaolin, R.drawable.hitler);
+
     private Texture currentTexture;
 
     @Override
@@ -54,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
         }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        }
 
         arFragment = (MustacheFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
 
@@ -63,14 +62,24 @@ public class MainActivity extends AppCompatActivity {
             modelRenderable.setShadowReceiver(false);
         });
         // Create the texture list and adapter
-        textureList = new ArrayList<>();
-        itemNames = new ArrayList<>();
-        textureList.add(R.drawable.bush);
-        itemNames.add("Bushy Mustaches");
-        textureList.add(R.drawable.brown);
-        itemNames.add("Brown Mustaches");
-        textureList.add(R.drawable.blue);
-        itemNames.add("Blue Mustaches");
+//        textureList = new ArrayList<>();
+//        itemNames = new ArrayList<>();
+//        textureList.add(R.drawable.bush);
+//        itemNames.add("Bushy");
+//        textureList.add(R.drawable.brown);
+//        itemNames.add("Brown");
+//        textureList.add(R.drawable.blue);
+//        itemNames.add("Blue");
+//        textureList.add(R.drawable.specs);
+//        itemNames.add("Specs");
+//        textureList.add(R.drawable.googles_black);
+//        itemNames.add("Black");
+//        textureList.add(R.drawable.french);
+//        itemNames.add("French");
+//        textureList.add(R.drawable.shaolin);
+//        itemNames.add("Shaolin");
+//        textureList.add(R.drawable.hitler);
+//        itemNames.add("Hitler");
         textureListView = findViewById(R.id.textureListView);
 
         itemAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemNames);
@@ -81,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
             int selectedTexture = textureAdapter.getItem(position);
             updateTexture(selectedTexture);
         });
-       // Texture.builder().setSource(this, R.drawable.blue).build().thenAccept(texture -> this.texture = texture);
 
         arFragment.getArSceneView().setCameraStreamRenderPriority(Renderable.RENDER_PRIORITY_FIRST);
         arFragment.getArSceneView().getScene().addOnUpdateListener(frameTime -> {
@@ -96,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 AugmentedFaceNode  augmentedFaceNode = new AugmentedFaceNode(augmentedFace);
                 augmentedFaceNode.setParent(arFragment.getArSceneView().getScene());
-                //augmentedFaceNode.setFaceRegionsRenderable(modelRenderable);
 
                 Vector3 scaleFactor = new Vector3(0.8f, 0.5f, 0.5f);
                 Vector3 positionOffset = new Vector3(0.0f, 999f, 0.0f);
@@ -136,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
                 // Open the new activity
                Intent intent = new Intent(MainActivity.this, SavedVidActivity.class);
                 startActivity(intent);
-                //Toast.makeText(MainActivity.this, "saved video", Toast.LENGTH_SHORT).show();
             }
         });
     }
