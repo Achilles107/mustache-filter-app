@@ -14,8 +14,9 @@
 
     <ListView
         android:id="@+id/textureListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
 
     <Button
         android:id="@+id/recordButton"
@@ -24,6 +25,15 @@
         android:text="Start Recording"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_margin="16dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/roundButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/video_saved"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
         android:layout_margin="16dp" />
 
 </RelativeLayout>

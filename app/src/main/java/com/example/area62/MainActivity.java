@@ -4,14 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.CamcorderProfile;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.ar.core.AugmentedFace;
 import com.google.ar.core.Frame;
 import com.google.ar.sceneform.AnchorNode;
@@ -34,11 +37,12 @@ public class MainActivity extends AppCompatActivity {
     private MustacheFragment arFragment;
     private VideoRecorder videoRecorder;
     private ModelRenderable modelRenderable;
-    private Texture texture;
     private boolean isAdded = false;
-
     private ListView textureListView;
     private ArrayAdapter<Integer> textureAdapter;
+
+    private ArrayAdapter<String> itemAdapter;
+    private List<String> itemNames;
     private List<Integer> textureList;
     private Texture currentTexture;
 
@@ -60,12 +64,18 @@ public class MainActivity extends AppCompatActivity {
         });
         // Create the texture list and adapter
         textureList = new ArrayList<>();
+        itemNames = new ArrayList<>();
         textureList.add(R.drawable.bush);
+        itemNames.add("Bushy Mustaches");
         textureList.add(R.drawable.brown);
+        itemNames.add("Brown Mustaches");
         textureList.add(R.drawable.blue);
+        itemNames.add("Blue Mustaches");
         textureListView = findViewById(R.id.textureListView);
+
+        itemAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemNames);
         textureAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, textureList);
-        textureListView.setAdapter(textureAdapter);
+        textureListView.setAdapter(itemAdapter);
 
         textureListView.setOnItemClickListener((parent, view, position, id) -> {
             int selectedTexture = textureAdapter.getItem(position);
@@ -88,14 +98,11 @@ public class MainActivity extends AppCompatActivity {
                 augmentedFaceNode.setParent(arFragment.getArSceneView().getScene());
                 //augmentedFaceNode.setFaceRegionsRenderable(modelRenderable);
 
-
-                augmentedFaceNode.setFaceMeshTexture(currentTexture);
-
-
                 Vector3 scaleFactor = new Vector3(0.8f, 0.5f, 0.5f);
                 Vector3 positionOffset = new Vector3(0.0f, 999f, 0.0f);
                 augmentedFaceNode.setLocalScale(scaleFactor);
                 augmentedFaceNode.setLocalPosition(positionOffset);
+                augmentedFaceNode.setFaceMeshTexture(currentTexture);
 
                 isAdded = true;
             }
@@ -119,6 +126,17 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 Toast.makeText(this, "Stopped Recording", Toast.LENGTH_SHORT).show();
                 button.setText("Start Recording");
+            }
+        });
+
+        FloatingActionButton roundButton = findViewById(R.id.roundButton);
+        roundButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the new activity
+               Intent intent = new Intent(MainActivity.this, SavedVidActivity.class);
+                startActivity(intent);
+                //Toast.makeText(MainActivity.this, "saved video", Toast.LENGTH_SHORT).show();
             }
         });
     }
