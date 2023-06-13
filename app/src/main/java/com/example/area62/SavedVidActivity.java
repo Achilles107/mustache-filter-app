@@ -131,6 +131,7 @@ public class SavedVidActivity extends AppCompatActivity {
                     }
                 });
                 builder.show();
+                Toast.makeText(this, "Video Saved", Toast.LENGTH_SHORT).show();
             }
         });
 

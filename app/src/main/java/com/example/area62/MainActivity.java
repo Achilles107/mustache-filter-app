@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
             for (File file : videoFiles) {
                 Log.d("MainActivity", "Video file name: " + file.getName());
 
-                VideoItem videoItem = new VideoItem(file.getName(), getVideoDuration(file));
+                String fName = file.getName().replace(".mp4", "");
+                VideoItem videoItem = new VideoItem(fName, getVideoDuration(file));
 
                 videoAdapter.add(videoItem);
             }
@@ -127,7 +128,7 @@ class VideoItem {
     public VideoItem(String name, String duration) {
         this.name = name;
         this.duration = duration;
-        this.file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "/Videos/" + name);
+        this.file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "/Videos/" + name + ".mp4");
     }
 
     public String getName() {
