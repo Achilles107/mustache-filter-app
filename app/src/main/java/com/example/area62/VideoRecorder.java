@@ -34,6 +34,8 @@ public class VideoRecorder {
     private Surface encoderSurface;
 
     private String filename = "demo";
+    private static final int DEFAULT_AUDIO_SOURCE = MediaRecorder.AudioSource.MIC;
+    private int audioSource = DEFAULT_AUDIO_SOURCE;
 
     private static final int[] FALLBACK_QUALITY_LEVELS = {
             CamcorderProfile.QUALITY_HIGH,
@@ -148,7 +150,10 @@ public class VideoRecorder {
 
     private void setUpMediaRecorder() throws IOException {
 
+
+
         mediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
+        mediaRecorder.setAudioSource(audioSource);
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
 
         mediaRecorder.setOutputFile(videoPath.getAbsolutePath());
@@ -156,6 +161,8 @@ public class VideoRecorder {
         mediaRecorder.setVideoFrameRate(frameRate);
         mediaRecorder.setVideoSize(videoSize.getWidth(), videoSize.getHeight());
         mediaRecorder.setVideoEncoder(videoCodec);
+        mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC); // Add this line for audio encoder
+
 
         mediaRecorder.prepare();
 

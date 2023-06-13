@@ -3,6 +3,8 @@ package com.example.area62;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -55,6 +57,11 @@ public class SavedVidActivity extends AppCompatActivity {
         }
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        }
+        // Check if the RECORD_AUDIO permission is granted
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            // Request the permission if it is not granted
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, 1);
         }
 
         arFragment = (MustacheFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
@@ -128,10 +135,11 @@ public class SavedVidActivity extends AppCompatActivity {
                         String tag = tagEditText.getText().toString();
                         videoRecorder.setFilename(tag);
                         videoRecorder.changeFileName();
+                        Toast.makeText(SavedVidActivity.this, "Video Saved", Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.show();
-                Toast.makeText(this, "Video Saved", Toast.LENGTH_SHORT).show();
+
             }
         });
 
