@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.util.Size;
 import android.view.Surface;
+
 import com.google.ar.sceneform.SceneView;
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +32,8 @@ public class VideoRecorder {
     private int bitRate = DEFAULT_BITRATE;
     private int frameRate = DEFAULT_FRAMERATE;
     private Surface encoderSurface;
+
+    private String filename = "demo";
 
     private static final int[] FALLBACK_QUALITY_LEVELS = {
             CamcorderProfile.QUALITY_HIGH,
@@ -115,6 +118,19 @@ public class VideoRecorder {
         }
     }
 
+    public void changeFileName(){
+
+        if (videoPath != null) {
+            File newFile = new File(videoPath.getParentFile(), filename+".mp4");
+            boolean renamed = videoPath.renameTo(newFile);
+
+            if (renamed) {
+                videoPath = newFile;
+            } else {
+                Log.e(TAG, "Failed to rename video file");
+            }
+        }
+    }
     private void stopRecordingVideo() {
         // UI
         recordingVideoFlag = false;
@@ -126,6 +142,8 @@ public class VideoRecorder {
         // Stop recording
         mediaRecorder.stop();
         mediaRecorder.reset();
+
+        //changeFileName(); // Call the changeFileName() method to change the filename
     }
 
     private void setUpMediaRecorder() throws IOException {
@@ -182,5 +200,9 @@ public class VideoRecorder {
 
     public boolean isRecording() {
         return recordingVideoFlag;
+    }
+
+    public void setFilename(String filename){
+        this.filename = filename;
     }
 }

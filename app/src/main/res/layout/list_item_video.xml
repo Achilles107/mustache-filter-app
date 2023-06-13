@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,21 +13,33 @@
         android:background="@drawable/list_item_background"
         android:elevation="8dp">
 
-    <ImageView
-        android:id="@+id/video_thumbnail"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/play_video"/>
+        <ImageView
+            android:id="@+id/video_thumbnail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/video" />
 
-    <TextView
-        android:id="@+id/video_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:paddingStart="16dp"
-        android:textColor="#763187"
-        android:textSize="16sp"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/video_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/theme"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/video_duration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/theme"
+                android:textSize="12sp" />
+        </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>
