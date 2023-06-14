@@ -23,7 +23,7 @@ Area62 is an Android application that allows users to record and save videos usi
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/example/area62.git
+   git clone https://github.com/example/area62.git](https://github.com/Achilles107/mustache-filter-app.git
 
 
 2. Open the project in Android Studio.
