@@ -1,6 +1,6 @@
-# Area62
+# SparkLens
 
-Area62 is an Android application that allows users to record and save videos using the device's camera, and view and rename the saved videos. It also incorporates augmented reality (AR) functionality by overlaying 3D models on users' faces in real-time during video recording.
+SparkLens is an Android application that allows users to record and save videos using the device's camera, and view and rename the saved videos. It also incorporates augmented reality (AR) functionality by overlaying 3D models on users' faces in real-time during video recording.
 
 ## Features
 
@@ -23,7 +23,7 @@ Area62 is an Android application that allows users to record and save videos usi
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/example/area62.git](https://github.com/Achilles107/mustache-filter-app.git
+   git clone https://github.com/Achilles107/mustache-filter-app.git
 
 
 2. Open the project in Android Studio.
