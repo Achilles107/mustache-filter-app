@@ -15,8 +15,8 @@ SparkLens is an Android application that allows users to record and save videos 
 
 ## Prerequisites
 
-- Android device running Android OS version XX or later.
-- Android Studio IDE version XX or later.
+- Android device running Android OS version 12 or later.
+- Android Studio IDE version Flamingo or later.
 
 ## Getting Started
 
@@ -69,6 +69,14 @@ The application requires the following permissions:
 7. To apply augmented reality effects during video recording:
 
       - While recording a video, the AR effects will automatically be applied to the user's face in real-time.
+  
+## Results
+<div>
+<img src="https://github.com/Achilles107/mustache-filter-app/blob/main/assets/img1.jpg" alt="Project Screenshot" width="200" height="500">
+<img src="https://github.com/Achilles107/mustache-filter-app/blob/main/assets/img2.jpg" alt="Project Screenshot" width="200" height="500">
+<img src="https://github.com/Achilles107/mustache-filter-app/blob/main/assets/img3.jpg" alt="Project Screenshot" width="200" height="500">
+</div>
+
 
 ## License
 
