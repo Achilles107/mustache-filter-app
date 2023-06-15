@@ -73,7 +73,6 @@ The application requires the following permissions:
 ## Results
 <div>
 <img src="https://github.com/Achilles107/mustache-filter-app/blob/main/assets/img1.jpg" alt="Project Screenshot" width="200" height="500">
-<img src="https://github.com/Achilles107/mustache-filter-app/blob/main/assets/img2.jpg" alt="Project Screenshot" width="200" height="500">
 <img src="https://github.com/Achilles107/mustache-filter-app/blob/main/assets/img3.jpg" alt="Project Screenshot" width="200" height="500">
 </div>
 
