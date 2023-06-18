@@ -80,3 +80,11 @@ The application requires the following permissions:
 ## License
 
 This project is licensed under the MIT License.
+
+
+## Contact
+
+For any inquiries or suggestions, please feel free to contact the project maintainer:
+
+Abhinav Shukla
+Email: abhinavshukla835@gmail.com
